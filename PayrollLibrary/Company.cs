@@ -43,8 +43,19 @@ namespace PayrollLibrary
             departments.Add(department);
         }
 
+        /// <summary>
+        /// Retrieves the department with the specified ID.
+        /// </summary>
+        /// <param name="id">The ID of the department to retrieve.</param>
+        /// <returns>The department with the specified ID, or null if not found.</returns>
+        /// <exception cref="ArgumentException">Thrown when the ID is 0.</exception>
         public Department? GetDepartment(int id)
         {
+            if (id == 0)
+            {
+                throw new ArgumentException("ID cannot be 0.", nameof(id));
+            }
+
             foreach (Department department in departments)
             {
                 if (department.Id == id)
